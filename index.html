@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A.U.R.O.R.A. - Misión 1: Análisis de Protocolos Estructurales</title>
-    <link rel="stylesheet" href="style.css">
+    <title>A.U.R.O.R.A. - Misión 1: Inspección de Protocolos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Scanlines overlay -->
@@ -52,7 +55,7 @@
                 <div class="completion-icon">🔧✅</div>
                 <div id="password-display">
                     <div class="password-label">TU CÓDIGO DE ACCESO:</div>
-                    <div class="password-value" id="generated-password">AURORA1M2I3S4I5O6N7</div>
+                    <div class="password-value" id="generated-password"></div>
                 </div>
                 <p class="completion-text">Guarda tu contraseña en un lugar seguro. La necesitarás para acceder al PROTOCOLO 2 de A.U.R.O.R.A.</p>
             </div>
@@ -68,7 +71,9 @@
         <!-- Header -->
         <header class="header">
             <div class="header-content">
-                <h1>A.U.R.O.R.A. - MISIÓN 1: ANÁLISIS DE PROTOCOLOS ESTRUCTURALES</h1>
+                <h1>A.U.R.O.R.A. - MISIÓN 1: INSPECCIÓN DE PROTOCOLOS</h1>
+                <!-- TIMER ELEMENT ADDED HERE -->
+                <div id="mission-timer" class="mission-timer">00:00:000</div>
                 <div class="mission-status">
                     <span>ESTADO:</span>
                     <span id="mission-status" class="status-indicator">ANÁLISIS EN PROGRESO</span>
@@ -107,6 +112,7 @@
                                 <div class="module-status" id="status-navegacion">🔴 CORRUPTO</div>
                             </div>
                         </button>
+                        <!-- COMMUNICATIONS MODULE BUTTON ADDED -->
                         <button class="module-btn" data-module="comunicaciones">
                             <div class="module-icon">🛰️</div>
                             <div class="module-info">
