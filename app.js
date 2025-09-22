@@ -102,7 +102,7 @@ function gestionarEnergia() {
         errors: ["Falta coma entre 85 y 76 en el array", "Error de tipeo en `niveles.lenght`", "Operador incorrecto `=` en lugar de `+=` para `energiaTotal`", "Falta punto y coma en `reporte.estadoGeneral`"]
     },
     herramientas: {
-        id: "herramientas",
+        id: "herramientas", // CORREGIDO
         name: "Modulo_Herramientas.js",
         icon: "🛠️",
         corruptCode: `// Protocolo de escaneo geológico V2.5
@@ -115,7 +115,7 @@ function escanearObjetivosDetallado() {
   let objetivos = ["Basalto" "Sedimentaria", "Pirita", "Hierro", "Granito"];
   let logDeEscaneo = [];
   
-  console.log("Iniciando escaneo de alta resolución..);
+  console.log("Iniciando escaneo de alta resolución..."); // CORREGIDO: Cadena de texto mal cerrada
 
   for (let i = 0; i < objetivos.length; i++) {
     let objetivoActual = objetivos[i];
@@ -203,7 +203,7 @@ function seguirRutaCompleta() {
     }
     
     let destino = PUNTOS_RUTA[waypoint_actual];
-    // A la función `log` le falta un paréntesis de cierre.
+    // A la función \`log\` le falta un paréntesis de cierre.
     console.log("Moviendo a waypoint " + waypointActual + ". Coordenadas: " + destino;
     
     moverA(destino);
@@ -237,7 +237,7 @@ function seguirRutaCompleta() {
     }
     
     let destino = PUNTOS_RUTA[waypoint_actual];
-    // A la función `log` le falta un paréntesis de cierre.
+    // A la función \`log\` le falta un paréntesis de cierre.
     console.log("Moviendo a waypoint " + waypoint_actual + ". Coordenadas: " + destino);
     
     moverA(destino);
@@ -282,7 +282,7 @@ function enviarReporteCompleto() {
     transmitirPaquete(paquete);
   }
   
-  console.log('Transmisión completa.);
+  console.log('Transmisión completa.'); // CORREGIDO: Cadena de texto mal cerrada
 }`,
         correctCode: `// Protocolo de transmisión de paquetes de datos V2.8
 // Estado: SINCRONIZACIÓN PERDIDA - Fallo en checksum.
@@ -721,7 +721,6 @@ function setupMainInterfaceListeners() {
 
 // Module Management
 function selectModule(moduleId) {
-    // CORRECTED: Use direct object access which is safer and simpler.
     const module = modules[moduleId];
     if (!module) {
         console.error("Module not found:", moduleId);
@@ -757,7 +756,6 @@ function verifyCode() {
     soundManager.play('click');
     if (!gameState.currentModule) return;
     
-    // CORRECTED: Use direct object access.
     const module = modules[gameState.currentModule];
     if (!module) return;
 
