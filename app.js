@@ -102,7 +102,7 @@ function gestionarEnergia() {
         errors: ["Falta coma entre 85 y 76 en el array", "Error de tipeo en `niveles.lenght`", "Operador incorrecto `=` en lugar de `+=` para `energiaTotal`", "Falta punto y coma en `reporte.estadoGeneral`"]
     },
     herramientas: {
-        id: "id",
+        id: "herramientas",
         name: "Modulo_Herramientas.js",
         icon: "🛠️",
         corruptCode: `// Protocolo de escaneo geológico V2.5
@@ -387,7 +387,7 @@ function diagnosticoExhaustivo() {
   console.log("Diagnóstico de integridad finalizado.");
   return reporteFinal;
 }`,
-        errors: ["Falta coma entre objetos del array `sistemas`", "Falta corchete de cierre `]` para el array `sistemas`", "Error de tipeo en `sistemas[i].nomber`", "Coma en lugar de punto y coma en el bucle `for` anidado"]
+        errors: ["Falta coma entre objetos del array `sistemas`", "Error de tipeo en `sistemas[i].nomber`", "Coma en lugar de punto y coma en el bucle `for` anidado"]
     }
 };
 
@@ -721,8 +721,12 @@ function setupMainInterfaceListeners() {
 
 // Module Management
 function selectModule(moduleId) {
-    const module = Object.values(modules).find(m => m.id === moduleId);
-    if (!module) return;
+    // CORRECTED: Use direct object access which is safer and simpler.
+    const module = modules[moduleId];
+    if (!module) {
+        console.error("Module not found:", moduleId);
+        return;
+    }
     
     gameState.currentModule = moduleId;
     
@@ -753,7 +757,10 @@ function verifyCode() {
     soundManager.play('click');
     if (!gameState.currentModule) return;
     
-    const module = Object.values(modules).find(m => m.id === gameState.currentModule);
+    // CORRECTED: Use direct object access.
+    const module = modules[gameState.currentModule];
+    if (!module) return;
+
     const codeEditor = document.getElementById('code-editor');
     const feedbackArea = document.getElementById('feedback-area');
     
