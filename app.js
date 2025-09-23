@@ -98,6 +98,7 @@ function escanearObjetivos() {
     console.log(objetivosEncontrados + " objetivos procesados.");
   
 }`,
+        // **** LA CORRECCIÓN CLAVE ESTÁ AQUÍ ****
         correctCode: `// Protocolo de escaneo geológico de herramientas.
 // Estado: CORRUPTO.
 
@@ -108,7 +109,7 @@ function escanearObjetivos() {
   let objetivos = ["Basalto", "Sedimentaria", "Pirita", "Cuarzo"];
   let objetivosEncontrados = 0;
 
-  console.log("Iniciando escaneo con: " + HERRAMIENTA_ACTIVA...);
+  console.log("Iniciando escaneo con: " + HERRAMIENTA_ACTIVA + "...");
 
   if (objetivos.length > 0) {
     console.log("Objetivos en cola: " + objetivos.length);
@@ -122,7 +123,7 @@ function escanearObjetivos() {
     console.log(objetivosEncontrados + " objetivos procesados.");
   }
 }`,
-        errors: ["Falta coma entre strings en el array", "Comilla mal cerrada en console.log", "Falta punto y coma en `objetivosEncontrados++`", "Falta llave de cierre"]
+        errors: ["Falta coma entre strings en el array", "Sintaxis inválida en console.log", "Falta punto y coma en `objetivosEncontrados++`", "Falta llave de cierre"]
     },
     navegacion: {
         id: "navegacion",
