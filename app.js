@@ -7,183 +7,131 @@ const gameState = {
     tutorialActive: true,
     timerInterval: null,
     startTime: null,
-    finalTime: null
+    finalTime: null // Para guardar el tiempo final
 };
 
+// --- CÓDIGO DE MÓDULOS REVERTIDO A DIFICULTAD INTERMEDIA ---
 const modules = {
     energia: {
         id: "energia",
         name: "Modulo_GestionDeEnergia.js",
         icon: "⚡️",
-        corruptCode: `// Protocolo de distribución de energía V3.0
-// Estado: CRÍTICO - Múltiples fallos en cascada.
+        corruptCode: `// Protocolo de distribución de energía V2.1
+// Estado: CRÍTICO - Requiere inspección inmediata.
 
-const UMBRAL_CRITICO = 70;
-const CAPACIDAD_TOTAL_KWH = 7500;
+const CAPACIDAD_MAXIMA = 5000; // Capacidad en kWh
 
-function gestionarEnergia() {
-  // Niveles porcentuales de las 7 celdas de energía principales.
-  let niveles = [98, 85 76, 91, 60, 99, 72];
+function revisarCeldas() {
+  // Niveles de energía de las 5 celdas principales.
+  let niveles = [98, 85 76, 91, 60];
   let celdasCriticas = [];
   let energiaTotal = 0;
 
-  console.log("INICIANDO ANÁLISIS ENERGÉTICO PROFUNDO...");
+  console.log("INICIANDO VERIFICACIÓN DE CELDAS...");
 
-  // Bucle para calcular energía y detectar celdas bajas.
-  for (let i = 0; i < niveles.lenght; i++) {
-    // ERROR LÓGICO: Esto reinicia el total en cada ciclo.
-    energiaTotal = niveles[i];
-    
-    console.log("Analizando Celda " + i + ": " + niveles[i] + "%");
-    if (niveles[i] < UMBRAL_CRITICO) {
-      console.log("ALERTA: Nivel bajo en celda " + i);
+  for (let i = 0; i < niveles.length, i++) {
+    let nivelActual = niveles[i]
+    energiaTotal += (CAPACIDAD_MAXIMA / 5) * (nivelActual / 100);
+    console.log("Celda " + i + ": " + nivelActual + "%");
+    if (nivelActual < 70) {
       celdasCriticas.push(i);
-      desviarEnergiaAuxiliar(i);
+      alertarBajoBateria(i);
     }
   }
 
-  let promedio = energiaTotal / niveles.length;
-  let reporte = {
-    promedioEnergia: promedio,
-    celdasBajas: celdasCriticas,
-    estadoGeneral: "Estable"
-  };
-
-  if (promedio < 80) {
-    reporte.estadoGeneral = "Alerta de consumo"
-    activarProtocoloAhorro();
-  }
-
-  console.log("Análisis completado. Estado: " + reporte.estadoGeneral);
-  return reporte;
+  console.log("Verificación completa. Celdas críticas: " + celdasCriticas.length);
+  return energiaTotal;
 }`,
-        correctCode: `// Protocolo de distribución de energía V3.0
-// Estado: CRÍTICO - Múltiples fallos en cascada.
+        correctCode: `// Protocolo de distribución de energía V2.1
+// Estado: CRÍTICO - Requiere inspección inmediata.
 
-const UMBRAL_CRITICO = 70;
-const CAPACIDAD_TOTAL_KWH = 7500;
+const CAPACIDAD_MAXIMA = 5000; // Capacidad en kWh
 
-function gestionarEnergia() {
-  // Niveles porcentuales de las 7 celdas de energía principales.
-  let niveles = [98, 85, 76, 91, 60, 99, 72];
+function revisarCeldas() {
+  // Niveles de energía de las 5 celdas principales.
+  let niveles = [98, 85, 76, 91, 60];
   let celdasCriticas = [];
   let energiaTotal = 0;
 
-  console.log("INICIANDO ANÁLISIS ENERGÉTICO PROFUNDO...");
+  console.log("INICIANDO VERIFICACIÓN DE CELDAS...");
 
-  // Bucle para calcular energía y detectar celdas bajas.
   for (let i = 0; i < niveles.length; i++) {
-    // ERROR LÓGICO: Esto reinicia el total en cada ciclo.
-    energiaTotal += niveles[i];
-    
-    console.log("Analizando Celda " + i + ": " + niveles[i] + "%");
-    if (niveles[i] < UMBRAL_CRITICO) {
-      console.log("ALERTA: Nivel bajo en celda " + i);
+    let nivelActual = niveles[i];
+    energiaTotal += (CAPACIDAD_MAXIMA / 5) * (nivelActual / 100);
+    console.log("Celda " + i + ": " + nivelActual + "%");
+    if (nivelActual < 70) {
       celdasCriticas.push(i);
-      desviarEnergiaAuxiliar(i);
+      alertarBajoBateria(i);
     }
   }
 
-  let promedio = energiaTotal / niveles.length;
-  let reporte = {
-    promedioEnergia: promedio,
-    celdasBajas: celdasCriticas,
-    estadoGeneral: "Estable"
-  };
-
-  if (promedio < 80) {
-    reporte.estadoGeneral = "Alerta de consumo";
-    activarProtocoloAhorro();
-  }
-
-  console.log("Análisis completado. Estado: " + reporte.estadoGeneral);
-  return reporte;
+  console.log("Verificación completa. Celdas críticas: " + celdasCriticas.length);
+  return energiaTotal;
 }`,
-        errors: ["Falta coma entre 85 y 76 en el array", "Error de tipeo en `niveles.lenght`", "Operador incorrecto `=` en lugar de `+=` para `energiaTotal`", "Falta punto y coma en `reporte.estadoGeneral`"]
+        errors: ["Falta coma entre 85 y 76 en el array", "Coma en lugar de punto y coma en el bucle for", "Falta punto y coma después de `niveles[i]`"]
     },
     herramientas: {
         id: "herramientas",
         name: "Modulo_Herramientas.js",
         icon: "🛠️",
-        corruptCode: `// Protocolo de escaneo geológico V2.5
-// Estado: CORRUPTO - Datos de objetivos no válidos.
+        corruptCode: `// Protocolo de escaneo geológico de herramientas.
+// Estado: CORRUPTO.
 
-const MINERALES_VALIOSOS = ["Pirita", "Cuarzo", "Oro", "Platino"];
+const HERRAMIENTA_ACTIVA = "Escaner de Densidad";
 
-function escanearObjetivosDetallado() {
-  // Lista de formaciones rocosas detectadas en el área.
-  let objetivos = ["Basalto" "Sedimentaria", "Pirita", "Hierro", "Granito"];
-  let logDeEscaneo = [];
-  
-  console.log("Iniciando escaneo de alta resolución...");
+function escanearObjetivos() {
+  // Lista de minerales de alta prioridad para recolección.
+  let objetivos = ["Basalto", "Sedimentaria" "Pirita", "Cuarzo"];
+  let objetivosEncontrados = 0;
 
-  for (let i = 0; i < objetivos.length; i++) {
-    let objetivoActual = objetivos[i];
-    let esValioso = MINERALES_VALIOSOS.includes(objetivoActual);
+  console.log("Iniciando escaneo con: " + HERRAMIENTA_ACTIVA...);
+
+  if (objetivos.length > 0) {
+    console.log("Objetivos en cola: " + objetivos.length);
+    activarEscaner();
     
-    // Si el objetivo es valioso, se activa la recolección.
-    if (esValioso) 
-      console.log("¡Objetivo valioso detectado!: " + objetivoActual);
-      activarRecoleccion(objetivoActual);
-      logDeEscaneo.push({ 
-        objetivo: objetivoActual, 
-        status: 'Recolectado' 
-      });
+    for (let i = 0; i < objetivos.length; i++) {
+        console.log("Escaneando: " + objetivos[i]);
+        objetivosEncontrados++
     }
-  }
-
-  if (logDeEscaneo.length === 0) {
-     console.log("No se encontraron objetivos de alta prioridad en la zona.");
-  }
-  
-  console.log("Escaneo finalizado.");
-  return logDeEscaneo;
-}`,
-        correctCode: `// Protocolo de escaneo geológico V2.5
-// Estado: CORRUPTO - Datos de objetivos no válidos.
-
-const MINERALES_VALIOSOS = ["Pirita", "Cuarzo", "Oro", "Platino"];
-
-function escanearObjetivosDetallado() {
-  // Lista de formaciones rocosas detectadas en el área.
-  let objetivos = ["Basalto", "Sedimentaria", "Pirita", "Hierro", "Granito"];
-  let logDeEscaneo = [];
-  
-  console.log("Iniciando escaneo de alta resolución...");
-
-  for (let i = 0; i < objetivos.length; i++) {
-    let objetivoActual = objetivos[i];
-    let esValioso = MINERALES_VALIOSOS.includes(objetivoActual);
     
-    // Si el objetivo es valioso, se activa la recolección.
-    if (esValioso) {
-      console.log("¡Objetivo valioso detectado!: " + objetivoActual);
-      activarRecoleccion(objetivoActual);
-      logDeEscaneo.push({ 
-        objetivo: objetivoActual, 
-        status: 'Recolectado' 
-      });
-    }
-  }
-
-  if (logDeEscaneo.length === 0) {
-     console.log("No se encontraron objetivos de alta prioridad en la zona.");
-  }
+    console.log(objetivosEncontrados + " objetivos procesados.");
   
-  console.log("Escaneo finalizado.");
-  return logDeEscaneo;
 }`,
-        errors: ["Falta coma entre strings en el array `objetivos`", "Falta llave de apertura `{` en el `if`", "Llave de cierre `}` extra al final del bucle for"]
+        correctCode: `// Protocolo de escaneo geológico de herramientas.
+// Estado: CORRUPTO.
+
+const HERRAMIENTA_ACTIVA = "Escaner de Densidad";
+
+function escanearObjetivos() {
+  // Lista de minerales de alta prioridad para recolección.
+  let objetivos = ["Basalto", "Sedimentaria", "Pirita", "Cuarzo"];
+  let objetivosEncontrados = 0;
+
+  console.log("Iniciando escaneo con: " + HERRAMIENTA_ACTIVA...);
+
+  if (objetivos.length > 0) {
+    console.log("Objetivos en cola: " + objetivos.length);
+    activarEscaner();
+    
+    for (let i = 0; i < objetivos.length; i++) {
+        console.log("Escaneando: " + objetivos[i]);
+        objetivosEncontrados++;
+    }
+    
+    console.log(objetivosEncontrados + " objetivos procesados.");
+  }
+}`,
+        errors: ["Falta coma entre strings en el array", "Comilla mal cerrada en console.log", "Falta punto y coma en `objetivosEncontrados++`", "Falta llave de cierre"]
     },
     navegacion: {
         id: "navegacion",
         name: "Modulo_NavegacionAvanzada.js",
         icon: "🗺️",
-        // **** LA CORRECCIÓN ESTÁ AQUÍ ****
-        corruptCode: `// Protocolo de seguimiento de ruta V4.1
-// Estado: INESTABLE - Punteros de memoria corruptos.
+        corruptCode: `// Protocolo de seguimiento de ruta autónoma.
+// Estado: INESTABLE.
 
-// Coordenadas [x, y, z] de la ruta de aproximación.
+// Coordenadas [x, y, z] de la ruta.
 const PUNTOS_RUTA = [
   [10, 20, 5],
   [15, 25, 5],
@@ -192,32 +140,22 @@ const PUNTOS_RUTA = [
 ];
 
 let waypoint_actual = 0;
-let combustible = 100; // Porcentaje de combustible.
 
-function seguirRutaCompleta() {
-  console.log("Sistema de navegación autónoma activado.");
+function seguirRuta() {
+  console.log("Sistema de navegación activado.");
   
-  for (waypointActual = 0; waypointActual < PUNTOS_RUTA.length waypointActual++) {
-    if (combustible < 10) {
-      console.log("ALERTA: Nivel de combustible crítico. Abortando ruta.");
-      break;
-    }
-    
-    let destino = PUNTOS_RUTA[waypoint_actual];
-    // A la función 'log' le falta un paréntesis de cierre.
-    console.log("Moviendo a waypoint " + waypointActual + ". Coordenadas: " + destino;
-    
-    moverA(destino);
-    combustible -= 5;
-    console.log("Combustible restante: " + combustible + "%");
+  if (waypoint_actual < PUNTOS_RUTA.length)
+    console.log("Waypoint actual: " + waypointActual);
+    console.log("Moviendo a: " + PUNTOS_RUTA[waypointActual]);
+    moverA(PUNTOS_RUTA[waypointActual]);
+  } else {
+    console.log("Ruta completada.");
   }
-  
-  console.log("Secuencia de navegación finalizada.");
 }`,
-        correctCode: `// Protocolo de seguimiento de ruta V4.1
-// Estado: INESTABLE - Punteros de memoria corruptos.
+        correctCode: `// Protocolo de seguimiento de ruta autónoma.
+// Estado: INESTABLE.
 
-// Coordenadas [x, y, z] de la ruta de aproximación.
+// Coordenadas [x, y, z] de la ruta.
 const PUNTOS_RUTA = [
   [10, 20, 5],
   [15, 25, 5],
@@ -226,169 +164,133 @@ const PUNTOS_RUTA = [
 ];
 
 let waypoint_actual = 0;
-let combustible = 100; // Porcentaje de combustible.
 
-function seguirRutaCompleta() {
-  console.log("Sistema de navegación autónoma activado.");
+function seguirRuta() {
+  console.log("Sistema de navegación activado.");
   
-  for (waypoint_actual = 0; waypoint_actual < PUNTOS_RUTA.length; waypoint_actual++) {
-    if (combustible < 10) {
-      console.log("ALERTA: Nivel de combustible crítico. Abortando ruta.");
-      break;
-    }
-    
-    let destino = PUNTOS_RUTA[waypoint_actual];
-    // A la función 'log' le falta un paréntesis de cierre.
-    console.log("Moviendo a waypoint " + waypoint_actual + ". Coordenadas: " + destino);
-    
-    moverA(destino);
-    combustible -= 5;
-    console.log("Combustible restante: " + combustible + "%");
+  if (waypoint_actual < PUNTOS_RUTA.length) {
+    console.log("Waypoint actual: " + waypoint_actual);
+    console.log("Moviendo a: " + PUNTOS_RUTA[waypoint_actual]);
+    moverA(PUNTOS_RUTA[waypoint_actual]);
+  } else {
+    console.log("Ruta completada.");
   }
-  
-  console.log("Secuencia de navegación finalizada.");
 }`,
-        errors: ["Falta punto y coma en la condición del bucle `for`", "Inconsistencia en nombre de variable (`waypointActual` vs `waypoint_actual`)", "Falta paréntesis de cierre en `console.log`"]
+        errors: ["Falta llave de apertura en if", "Inconsistencia en nombre de variable (waypointActual vs waypoint_actual)", "Llave de cierre extra"]
     },
     comunicaciones: {
         id: "comunicaciones",
         name: "Modulo_Comunicaciones.js",
         icon: "🛰️",
-        corruptCode: `// Protocolo de transmisión de paquetes de datos V2.8
-// Estado: SINCRONIZACIÓN PERDIDA - Fallo en checksum.
+        corruptCode: `// Protocolo de transmisión de paquetes de datos.
+// Estado: SINCRONIZACIÓN PERDIDA.
 
 const ID_MISION = "AURORA-01";
-const FRECUENCIA_GHZ = 2.4;
+const FRECUENCIA = "2.4GHz";
 
-function enviarReporteCompleto() {
-  // Ensamblaje del paquete de datos como un objeto.
-  let telemetria = {
-    id: ID_MISION,
-    timestamp: Date.now(),
-    estado: "Operacional"
-    temperatura: 23.5,
-    componentes: ["Sensor A", "Sensor B", "Sensor C", "Giroscopio"]
-  };
+function enviarPaqueteDeDatos() {
+  // Recopilación de telemetría.
+  let estado = "Operacional"
+  let temperatura = 23;
+  let humedad = 45;
+  let presion = 1012; // en hPa
   
-  // Codificar el objeto a un string para transmisión.
-  let datosCodificados = JSON.stringify(telemetria)
-  const tamanoPaquete = 20; // Bytes por paquete
+  // Ensamblaje del paquete de datos.
+  let datos = [
+    ID_MISION, 
+    estado,
+    temperatura,
+    humedad,
+    presion
+  ]
 
-  console.log('Transmisión de datos iniciada...');
-  
-  // Simulación de envío en múltiples paquetes.
-  for (let i = 0; i < datosCodificados.length; i += tamanoPaquete); {
-    let paquete = datosCodificados.substring(i, i + tamanoPaquete);
-    console.log("Transmitiendo paquete: " + paquete);
-    transmitirPaquete(paquete);
-  }
-  
-  console.log('Transmisión completa.');
+  console.log("Paquete de datos ensamblado.");
+  transmitirPaquete(datos, FRECUENCIA);
 }`,
-        correctCode: `// Protocolo de transmisión de paquetes de datos V2.8
-// Estado: SINCRONIZACIÓN PERDIDA - Fallo en checksum.
+        correctCode: `// Protocolo de transmisión de paquetes de datos.
+// Estado: SINCRONIZACIÓN PERDIDA.
 
 const ID_MISION = "AURORA-01";
-const FRECUENCIA_GHZ = 2.4;
+const FRECUENCIA = "2.4GHz";
 
-function enviarReporteCompleto() {
-  // Ensamblaje del paquete de datos como un objeto.
-  let telemetria = {
-    id: ID_MISION,
-    timestamp: Date.now(),
-    estado: "Operacional",
-    temperatura: 23.5,
-    componentes: ["Sensor A", "Sensor B", "Sensor C", "Giroscopio"]
-  };
+function enviarPaqueteDeDatos() {
+  // Recopilación de telemetría.
+  let estado = "Operacional";
+  let temperatura = 23;
+  let humedad = 45;
+  let presion = 1012; // en hPa
   
-  // Codificar el objeto a un string para transmisión.
-  let datosCodificados = JSON.stringify(telemetria);
-  const tamanoPaquete = 20; // Bytes por paquete
+  // Ensamblaje del paquete de datos.
+  let datos = [
+    ID_MISION, 
+    estado,
+    temperatura,
+    humedad,
+    presion
+  ];
 
-  console.log('Transmisión de datos iniciada...');
-  
-  // Simulación de envío en múltiples paquetes.
-  for (let i = 0; i < datosCodificados.length; i += tamanoPaquete) {
-    let paquete = datosCodificados.substring(i, i + tamanoPaquete);
-    console.log("Transmitiendo paquete: " + paquete);
-    transmitirPaquete(paquete);
-  }
-  
-  console.log('Transmisión completa.');
+  console.log("Paquete de datos ensamblado.");
+  transmitirPaquete(datos, FRECUENCIA);
 }`,
-        errors: ["Falta coma entre `estado` y `temperatura` en el objeto", "Falta punto y coma después de `JSON.stringify`", "Punto y coma extra después de la declaración del bucle `for`"]
+        errors: ["Falta punto y coma después de 'Operacional'", "Corchete de cierre del array mal colocado"]
     },
     diagnostico: {
         id: "diagnostico",
         name: "Modulo_Diagnostico.js",
         icon: "🩺",
-        corruptCode: `// Protocolo de diagnóstico de integridad V3.2
-// Estado: ERRORES NO ESPECIFICADOS - Requiere análisis manual.
+        corruptCode: `// Protocolo de diagnóstico de integridad del sistema.
+// Estado: ERRORES NO ESPECIFICADOS.
 
-function diagnosticoExhaustivo() {
-  // Lista de sistemas críticos a verificar con sub-componentes.
+function ejecutarDiagnostico() {
+  // Lista de sistemas críticos a verificar.
   let sistemas = [
-    { nombre: "Motores", subComponentes: ["Propulsor A", "Propulsor B", "Giroscopio"] },
-    // Falta una coma entre estos dos objetos.
-    { nombre: "Comunicaciones", subComponentes: ["Antena", "Transceptor"] }
-    { nombre: "Soporte Vital", subComponentes: ["O2 Gen", "Filtro CO2"] }
+    "Motores", 
+    "Comunicaciones, 
+    "Soporte Vital",
+    "Herramientas"
   ];
-  let reporteFinal = [];
+  let erroresDetectados = false;
   
-  console.log("INICIANDO DIAGNÓSTICO PROFUNDO DE SISTEMAS...");
+  console.log("INICIANDO DIAGNÓSTICO PROFUNDO...");
 
-  for (let i = 0; i < sistemas.length; i++) {
-    // Error de tipeo sutil en la propiedad 'nombre'.
-    console.log("Verificando sistema: " + sistemas[i].nomber);
-    let erroresSistema = 0;
-    
-    // Bucle anidado para verificar sub-componentes.
-    for (let j = 0; j < sistemas[i].subComponentes.length, j++) {
-      let componente = sistemas[i].subComponentes[j];
-      if (!verificarComponente(componente)) {
-        erroresSistema++;
-      }
+  for (let i = 0 i < sistemas.length; i++) {
+    console.log("Verificando integridad de: " + sistemas[i]);
+    let resultado = verificarSistema(sistemas[i]);
+    if (!resultado) {
+      erroresDetectados = true;
     }
-    reporteFinal.push({ sistema: sistemas[i].nombre, errores: erroresSistema });
   }
   
-  console.log("Diagnóstico de integridad finalizado.");
-  return reporteFinal;
+  console.log("Diagnóstico finalizado.");
+  return !erroresDetectados;
 }`,
-        correctCode: `// Protocolo de diagnóstico de integridad V3.2
-// Estado: ERRORES NO ESPECIFICADOS - Requiere análisis manual.
+        correctCode: `// Protocolo de diagnóstico de integridad del sistema.
+// Estado: ERRORES NO ESPECIFICADOS.
 
-function diagnosticoExhaustivo() {
-  // Lista de sistemas críticos a verificar con sub-componentes.
+function ejecutarDiagnostico() {
+  // Lista de sistemas críticos a verificar.
   let sistemas = [
-    { nombre: "Motores", subComponentes: ["Propulsor A", "Propulsor B", "Giroscopio"] },
-    // Falta una coma entre estos dos objetos.
-    { nombre: "Comunicaciones", subComponentes: ["Antena", "Transceptor"] },
-    { nombre: "Soporte Vital", subComponentes: ["O2 Gen", "Filtro CO2"] }
+    "Motores", 
+    "Comunicaciones", 
+    "Soporte Vital",
+    "Herramientas"
   ];
-  let reporteFinal = [];
+  let erroresDetectados = false;
   
-  console.log("INICIANDO DIAGNÓSTICO PROFUNDO DE SISTEMAS...");
+  console.log("INICIANDO DIAGNÓSTICO PROFUNDO...");
 
   for (let i = 0; i < sistemas.length; i++) {
-    // Error de tipeo sutil en la propiedad 'nombre'.
-    console.log("Verificando sistema: " + sistemas[i].nombre);
-    let erroresSistema = 0;
-    
-    // Bucle anidado para verificar sub-componentes.
-    for (let j = 0; j < sistemas[i].subComponentes.length; j++) {
-      let componente = sistemas[i].subComponentes[j];
-      if (!verificarComponente(componente)) {
-        erroresSistema++;
-      }
+    console.log("Verificando integridad de: " + sistemas[i]);
+    let resultado = verificarSistema(sistemas[i]);
+    if (!resultado) {
+      erroresDetectados = true;
     }
-    reporteFinal.push({ sistema: sistemas[i].nombre, errores: erroresSistema });
   }
   
-  console.log("Diagnóstico de integridad finalizado.");
-  return reporteFinal;
+  console.log("Diagnóstico finalizado.");
+  return !erroresDetectados;
 }`,
-        errors: ["Falta coma entre objetos del array `sistemas`", "Error de tipeo en `sistemas[i].nomber`", "Coma en lugar de punto y coma en el bucle `for` anidado"]
+        errors: ["Comilla mal colocada en 'Comunicaciones,'", "Falta punto y coma en bucle for"]
     }
 };
 
